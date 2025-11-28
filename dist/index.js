@@ -60,6 +60,7 @@ async function validateSubscription() {
 }
 async function run() {
     try {
+        await validateSubscription();
         const githubToken = core.getInput('github_token');
         const labels = core
             .getInput('labels')

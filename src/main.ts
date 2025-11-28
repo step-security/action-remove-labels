@@ -21,6 +21,7 @@ async function validateSubscription(): Promise<void> {
 
 async function run(): Promise<void> {
   try {
+    await validateSubscription();
     const githubToken = core.getInput('github_token');
 
     const labels = core
