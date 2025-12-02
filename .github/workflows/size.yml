@@ -8,15 +8,20 @@ jobs:
   update_labels:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v6
+      - name: Harden the runner (Audit all outbound calls)
+        uses: step-security/harden-runner@df199fb7be9f65074067a9eb93f12bb4c5547cf2 # v2.13.3
+        with:
+          egress-policy: audit
 
-      - uses: actions-ecosystem/action-size@v2
+      - uses: actions/checkout@1af3b93b6815bc44a9784bd300feb67ff0d1eeb3 # v6.0.0
+
+      - uses: actions-ecosystem/action-size@4d4eb590de787d7fc42df1e84f919f6d38588a14 # v2.2.0
         id: size
 
       - uses: ./
         with:
           labels: ${{ steps.size.outputs.stale_labels }}
 
-      - uses: step-security/action-add-labels@release
+      - uses: step-security/action-add-labels@fdf8e47e8fd42b287d2550577933051bc014dd51 # release
         with:
           labels: ${{ steps.size.outputs.new_label }}
