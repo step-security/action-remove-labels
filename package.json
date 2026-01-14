@@ -24,7 +24,7 @@
     "axios": "^1.13.2"
   },
   "devDependencies": {
-    "@types/node": "^24.10.1",
+    "@types/node": "^25.0.8",
     "@vercel/ncc": "^0.38.4",
     "typescript": "^5.9.3"
   }
